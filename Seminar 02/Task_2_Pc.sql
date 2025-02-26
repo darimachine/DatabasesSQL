@@ -29,20 +29,22 @@ EXCEPT
 SELECT maker
 FROM product JOIN pc ON product.model = pc.model;
 
-SELECT *
-FROM product;
-
-
+--Напишете заявка, която извежда размерите на тези дискове, които се предлагат
+--в поне два различни персонални компютъра (два компютъра с различен код).
 SELECT hd
 FROM PC
 GROUP BY hd
 HAVING COUNT(DISTINCT code)>=2;
 
-
+--Напишете заявка, която извежда двойките модели на персонални компютри,
+--които имат еднаква честота и памет. Двойките трябва да се показват само по
+--веднъж, например само (i, j), но не и (j, i).
 SELECT pc1.model,pc2.model
 FROM PC as pc1 JOIN pc as pc2 ON (pc1.speed = pc2.speed AND pc1.ram = pc2.ram)
 WHERE pc1.model < pc2.model;
 
+--Напишете заявка, която извежда производителите на поне два различни
+--персонални компютъра с честота поне 400.
 SELECT maker
 FROM product JOIN pc ON product.model=pc.model
 WHERE speed>400
